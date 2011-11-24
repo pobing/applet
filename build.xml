@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="deploy" name="applets">
+	<!-- Properties and Paths -->
+	<property file="build.properties" />
+	<!-- 排除java源文件的模式集 -->
+	<patternset id="no.java">
+		<exclude name="**/*.java" />
+	</patternset>
+	<path id="project.class.path">
+		<pathelement location="${dir.java.build}" />
+		<fileset dir="${dir.lib}" id="lib.path">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<!-- 初始化,建立目录,复制文件-->
+	<target name="init" depends="clean" description="初始化,建立目录,复制文件">
+		<mkdir dir="${dir.java.build}" />
+		<mkdir dir="${dir.lib}" />
+		<mkdir dir="${dir.deploy}" />
+		<copy todir="${dir.java.build}">
+			<fileset dir="${dir.java.src}">
+				<patternset refid="no.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- 清理,删除临时目录 -->
+	<target name="clean" description="清理,删除临时目录">
+		<delete dir="${dir.deploy}" />
+		<delete file="${dir.deploy}/${file.jar}" />
+		<echo level="info">清理完毕</echo>
+	</target>
+
+
+	<!-- 打包类文件 -->
+	<target name="deploy" description="打包类文件">
+		<mkdir dir="${dir.deploy}" />
+		<jar jarfile="${dir.deploy}/${file.jar}">
+			<fileset dir="${dir.java.build}">
+				<include name="**/*.class" />
+			</fileset>
+		</jar>
+	</target>
+</project>

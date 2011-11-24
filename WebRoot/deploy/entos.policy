@@ -1,0 +1,6 @@
+keystore"file:entos.store","JKS"; 
+ grantsignedBy"
+" 
+ { 
+ permission java.io.FilePermission"<<ALLFILES>>","read,write,excute"; 
+ }; 

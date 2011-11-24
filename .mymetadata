@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="applets"
+  id="myeclipse.1303437919859"
+  context-root="/applets"
+  j2ee-spec="5.0"
+  archive="applets.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+
